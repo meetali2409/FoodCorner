@@ -1,0 +1,154 @@
+﻿
+@model MenuViewModel
+@using FoodCornerWebApp.Models
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Menu</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="AboutUs">About Us</a>
+            <a asp-controller="Food" asp-action="Menu">Menu</a>
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+            <a asp-controller="About" asp-action="Contact">Contact</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+<div class="menu-container">
+    <div class="category-sidebar">
+        <ul>
+            <li>
+                <a asp-action="Menu"
+                   asp-controller="Food"
+                   class="@(ViewBag.SelectedCategory == null ? "active" : "")">
+                    All
+                </a>
+            </li>
+
+            @foreach (var cat in Model.Categories)
+            {
+                <li>
+                    <a asp-action="Menu"
+                       asp-controller="Food"
+                       asp-route-categoryId="@cat.CategoryId"
+                       class="@(ViewBag.SelectedCategory == cat.CategoryId ? "active" : "")">
+                        @cat.CategoryName
+                    </a>
+                </li>
+            }
+        </ul>
+    </div>
+
+        <div class="food-section">
+            @foreach (var item in Model.FoodItems)
+            {
+                <div class="food-card">
+
+                    <div class="food-info">
+                        <h4>@item.FoodItemName</h4>
+                        <p class="desc">@item.Description</p>
+                    </div>
+
+                    <div class="food-action">
+                        <img src="@item.Image" />
+                        <p class="price">₹ @item.Price</p>
+
+                        <div class="add-area">
+                            @if (item.QuantityInCart == 0)
+                            {
+                                <a asp-controller="Cart"
+                                   asp-action="Add"
+                                   asp-route-id="@item.FoodItemId"
+                                   asp-route-name="@item.FoodItemName"
+                                   asp-route-price="@item.Price"
+                                   asp-route-image="@item.Image"
+                                   asp-route-category="@item.CategoryName"
+                                   class="add-btn">
+                                    ADD
+                                </a>
+
+
+
+                            }
+                            else
+                            {
+                                <div class="qty-box">
+                                    <a asp-controller="Cart"
+                                       asp-action="Decrease"
+                                       asp-route-id="@item.FoodItemId">−</a>
+
+                                    <span>@item.QuantityInCart</span>
+
+                                    <a asp-controller="Cart"
+                                       asp-action="Add"
+                                       asp-route-id="@item.FoodItemId">+</a>
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+        @{
+            var totalItems = Model.CartItems.Sum(x => x.Quantity);
+        }
+
+        @if (totalItems > 0)
+        {
+            <div class="bottom-cart-bar">
+                <span>@totalItems item added</span>
+
+                <a asp-controller="Cart"
+                   asp-action="Index"
+                   class="view-cart-btn">
+                    VIEW CART
+                </a>
+            </div>
+        }
+
+</div>
+    <footer class="custom-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-section">
+                <h2>FOOD CORNER</h2>
+                <p>Pure Veg | Fresh Taste | Quality Food</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="About" asp-action="AboutUs">About</a>
+                <a asp-controller="Food" asp-action="Menu">Menu</a>
+                <a asp-controller="Cart" asp-action="Index">Cart</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Indore, Madhya Pradesh</p>
+                <p>📞 +91 9876543210</p>
+                <p>📧 foodcorner@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Food Corner | All Rights Reserved
+        </div>
+    </footer>
+</body>
+</html>

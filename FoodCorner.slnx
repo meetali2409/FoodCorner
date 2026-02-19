@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="FoodCornerAPI/FoodCornerAPI.csproj" />
+  <Project Path="FoodCorners.DTO/FoodCorner.DTO.csproj" Id="3a685a5a-e984-4101-8e86-6887b2fb8046" />
+  <Project Path="FoodCornerWebApp/FoodCornerWebApp.csproj" Id="0fecae7a-3f4c-43a7-b2b0-de008806f5d5" />
+</Solution>

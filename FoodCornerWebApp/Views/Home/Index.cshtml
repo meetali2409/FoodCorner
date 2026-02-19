@@ -1,0 +1,212 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+    Layout = null;
+} 
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    </head>
+    <body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="AboutUs">About Us</a>
+            <a asp-controller="Food" asp-action="Menu">Menu</a>
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+            <li><a href="#contact">Contact</a></li>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+    <div class="home"><h1>Welcome to Food Corner </h1>
+        <p>Pure Veg | Fresh Taste | Quality Food</p>
+        <img src="/css/ChatGPT Image Feb 5, 2026, 03_16_23 PM.png" alt="logo" /> 
+        <div class="home-buttons">
+            <a asp-controller="Food" asp-action="Menu" class="btn">View Menu</a>
+        </div>
+    </div>
+    <section class="why-section">
+        <div class="container">
+            <div class="why-left">
+                <span class="subtitle">Best Catering Services</span>
+                <h2>Why Choose Us?</h2>
+                <p class="main-text">
+                    We serve fresh and delicious food with love and passion.
+                    Our team ensures premium quality and fast delivery every time.
+                </p>
+
+                <div class="feature">
+                    <div class="icon">👨‍🍳</div>
+                    <div>
+                        <h4>Certified & Expert Chefs</h4>
+                        <p>Our chefs are professionally trained and experienced.</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="icon">⭐</div>
+                    <div>
+                        <h4>Premium Quality</h4>
+                        <p>We use only high-quality fresh ingredients.</p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="icon">🥬</div>
+                    <div>
+                        <h4>Locally Sourced Produce</h4>
+                        <p>We support local farmers and fresh markets.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="why-right">
+                <div class="image-box">
+                    <img src="https://www.champaranmeathousedaman.com/public/images/products/1732185441-veg-restaurant.jpg" alt="Food Image">
+                 
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="special-section">
+        <h2>Our Special Dishes</h2>
+
+        <div class="special-container">
+
+            <div class="special-card">
+                <img src="https://i0.wp.com/www.blissofcooking.com/wp-content/uploads/2017/07/Double-Cheese-Veggie-Burger-EOP.jpg?resize=720%2C787&ssl=1" alt="Burger">
+                <h3>Cheese Burger</h3>
+                <p>₹149</p>
+                <a asp-controller="Food" asp-action="Menu" class="order-btn">Order Now</a>
+            </div>
+
+            <div class="special-card">
+                <img src="https://theclubhousephg.com/wp-content/uploads/2025/03/FARM-HOUSE-DELIGHT-PIZZA.png" alt="Pizza">
+                <h3>Farmhouse Pizza</h3>
+                <p>₹299</p>
+                <a asp-controller="Food" asp-action="Menu" class="order-btn">Order Now</a>
+            </div>
+
+            <div class="special-card">
+                <img src="https://www.indianveggiedelight.com/wp-content/uploads/2022/12/white-sauce-pasta-featured.jpg" alt="Pasta">
+                <h3>White Sauce Pasta</h3>
+                <p>₹199</p>
+                <a asp-controller="Food" asp-action="Menu" class="order-btn">Order Now</a>
+            </div>
+
+        </div>
+    </section>
+    <section class="review-section">
+        <h2>What Our Customers Say</h2>
+
+        <div class="review-container">
+
+            <div class="review-card">
+                <p>"Amazing taste and super fast delivery. Loved it!"</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>- Rahul Sharma</h4>
+            </div>
+
+            <div class="review-card">
+                <p>"Best pure veg restaurant in town. Highly recommended."</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>- Sneha Patil</h4>
+            </div>
+
+            <div class="review-card">
+                <p>"Clean ambience and premium quality food."</p>
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <h4>- Amit Verma</h4>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact-section"  id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-modern">
+            <div class="contact-card">
+            <div class="contact-left">
+                <div class="discount-circle">
+                        <h2>10%</h2>
+                        <p>Off<br /> On<br/>First Order</p>
+                </div>
+
+                <h3>Our Contact</h3>
+                <a href="#" class="call-btn">Call Us</a>
+            </div>
+
+            <div class="contact-right" id="contact">
+
+                <div class="contact-item">
+                    <div class="icon">💬</div>
+                    <div>
+                        <h4>Chat To Us</h4>
+                        <p>Our friendly team is here to help.</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">📍</div>
+                    <div>
+                        <h4>Office</h4>
+                        <p>Indore, Madhya Pradesh , India</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="icon">📞</div>
+                    <div>
+                        <h4>Phone</h4>
+                        <p>Everyday from 10am to 7pm<br>+91 9876543210</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div></div>
+       
+    </section>
+    <footer class="custom-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-section">
+                <h2>FOOD CORNER</h2>
+                <p>Pure Veg | Fresh Taste | Quality Food</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="About" asp-action="AboutUs">About</a>
+                <a asp-controller="Food" asp-action="Menu">Menu</a>
+                <a asp-controller="Cart" asp-action="Index">Cart</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Indore, Madhya Pradesh</p>
+                <p>📞 +91 9876543210</p>
+                <p>📧 foodcorner@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Food Corner | All Rights Reserved
+        </div>
+    </footer>
+
+</body>
+</html>
+
+@if (ViewBag.Error != null)
+{
+    <p style="color:red">@ViewBag.Error</p>
+}

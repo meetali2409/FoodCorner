@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v10.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v10.0": {
+      "FoodCorner.DTO/1.0.0": {
+        "runtime": {
+          "FoodCorner.DTO.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "FoodCorner.DTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

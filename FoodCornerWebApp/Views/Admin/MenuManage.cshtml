@@ -1,0 +1,127 @@
+﻿@model List<FoodCorner.DTO.FoodDTO>
+@{
+    var editItem = ViewBag.EditItem as FoodCorner.DTO.FoodDTO;
+    var isAddMode = ViewBag.AddMode as bool? ?? false;
+}
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="~/css/admin.css" rel="stylesheet" asp-append-version="true"/>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+        <ul class="nav-links">
+            <a asp-controller="Admin" asp-action="Index">Home</a>
+            <a asp-controller="Admin" asp-action="MenuManage">Manage Food Items</a>
+            <a asp-controller="Admin" asp-action="CategoryManage">Manage Categories</a>
+            <a asp-controller="Admin" asp-action="OrderManage">Manage Orders</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+    <div class="admin-container">
+
+        <div class="admin-header">
+            <h2>Manage Food Items</h2>
+            <a asp-action="MenuManage"asp-route-addMode="true"class="add-btn"> + Add Food</a>
+
+        </div>
+
+        <table class="food-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><img src="@item.Image" class="food-img" /></td>
+                        <td>@item.FoodItemName</td>
+                        <td>@item.CategoryName</td>
+                        <td>₹ @item.Price</td>
+                        <td>
+                            <a asp-action="MenuManage" asp-route-editId="@item.FoodItemId" class="action-btn edit-btn">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@item.FoodItemId" class="action-btn delete-btn">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (editItem != null)
+        {
+            <div class="edit-box">
+                <h3>Edit Food</h3>
+
+                <form asp-action="Edit" method="post">
+                    <input type="hidden" name="FoodItemId" value="@editItem.FoodItemId" />
+
+                    <input type="text" name="FoodItemName" value="@editItem.FoodItemName" required />
+                    <input type="number" name="Price" value="@editItem.Price" required />
+                    <select name="CategoryId">
+                        @foreach (var cat in ViewBag.Categories)
+                        {
+                            <option value="@cat.CategoryId">
+                                @cat.CategoryName
+                            </option>
+                        }
+                    </select>
+
+                    <input type="text" name="Description" value="@editItem.Description" />
+                    <input type="text" name="Image" value="@editItem.Image" />
+
+                    <div class="form-buttons">
+                        <button type="submit">Update</button>
+                        <a asp-action="MenuManage" class="cancel-btn">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        }
+
+
+    </div>
+    @if (isAddMode)
+    {
+        <div class="edit-box">
+            <h3>Add New Food</h3>
+
+            <form asp-action="Create" method="post">
+                <input type="text" name="FoodItemName" placeholder="Food Name" required />
+                <input type="number" name="Price" placeholder="Price" required />
+                <select name="CategoryId">
+                    @foreach (var cat in ViewBag.Categories)
+                    {
+                        <option value="@cat.CategoryId">
+                            @cat.CategoryName
+                        </option>
+                    }
+                </select>
+                <input type="text" name="Description" placeholder="Description" />
+                <input type="text" name="Image" placeholder="Image URL" />
+
+                <div class="form-buttons">
+                    <button type="submit">Save</button>
+                    <a asp-action="MenuManage" class="cancel-btn">Cancel</a>
+                </div>
+            </form>
+        </div>
+    }
+
+
+</body>
+</html>

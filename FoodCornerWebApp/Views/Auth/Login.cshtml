@@ -1,0 +1,34 @@
+﻿@model FoodCorner.DTO.LoginDTO
+@{
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+    <body class="body">
+    <div class="form">
+    <div class="box">
+        <h2>Login</h2>
+        <form asp-action="Login" method="post">
+            <div> 
+                <label>Email</label>
+                <input asp-for="Email" />
+                    <span asp-validation-for ="Email" class="error"></span>
+            </div>
+            <div>
+                <label>Password</label>
+                    <input asp-for="Password" type="password" />
+                    <span class="error">@ViewBag.Error</span>
+            </div> 
+                <button type="submit">Login</button>
+                <div class="link">
+                    <h3>Don’t have an account?<a asp-controller="Auth" asp-action="Register" class="button">Register</a></h3>
+                </div>
+        </form>
+        </div>
+    </div>
+    </body>
+</html>
+

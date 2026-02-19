@@ -1,0 +1,102 @@
+﻿@model List<FoodCornerWebApp.Models.CartItem>
+
+@{
+    decimal grandTotal = Model.Sum(x => x.Price * x.Quantity);
+    Layout = null;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="AboutUs">About Us</a>
+            <a asp-controller="Food" asp-action="Menu">Menu</a>
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+            <a asp-controller="About" asp-action="Contact">Contact</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+    <div class="checkout-wrapper">
+
+        <h2 class="checkout-title">Checkout</h2>
+
+        <form asp-controller="Order" asp-action="PlaceOrder" method="post">
+
+            <div class="checkout-box">
+
+                <h3 class="summary-heading">Order Summary</h3>
+
+                <table class="checkout-table">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Qty</th>
+                            <th>Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.FoodItemName</td>
+                                <td>@item.Quantity</td>
+                                <td>₹ @item.Price</td>
+                                <td>₹ @(item.Price* item.Quantity)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <div class="checkout-total">
+                    Grand Total: ₹ @grandTotal
+                </div>
+
+                <button type="submit" class="confirm-btn">
+                    Confirm Order
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+    <footer class="custom-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-section">
+                <h2>FOOD CORNER</h2>
+                <p>Pure Veg | Fresh Taste | Quality Food</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="About" asp-action="AboutUs">About</a>
+                <a asp-controller="Food" asp-action="Menu">Menu</a>
+                <a asp-controller="Cart" asp-action="Index">Cart</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Indore, Madhya Pradesh</p>
+                <p>📞 +91 9876543210</p>
+                <p>📧 foodcorner@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Food Corner | All Rights Reserved
+        </div>
+    </footer>
+</body>
+</html>

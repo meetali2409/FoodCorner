@@ -1,0 +1,68 @@
+﻿@{
+    Layout =null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Order Success</title>
+        <link rel="stylesheet" href="~/css/site.css" />
+    </head>
+    <body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="AboutUs">About Us</a>
+            <a asp-controller="Food" asp-action="Menu">Menu</a>
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+            <a asp-controller="About" asp-action="Contact">Contact</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+        <div class="success-container">
+            <div class="success-box">
+                <div class="check-icon">""</div>
+
+            <h3>Order Placed Successfully!</h3>
+
+            <p>Your order has been confirmed.</p>
+            <div class="success-actions">
+                <a asp-controller="Food" asp-action="Menu" class="btn-primary">Back to Menu</a>
+                <a asp-controller="Home" asp-action="Index" class="btn-secondary">Go to Home</a>
+            </div>
+            </div>
+        
+        </div>
+    <footer class="custom-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-section">
+                <h2>FOOD CORNER</h2>
+                <p>Pure Veg | Fresh Taste | Quality Food</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="About" asp-action="AboutUs">About</a>
+                <a asp-controller="Food" asp-action="Menu">Menu</a>
+                <a asp-controller="Cart" asp-action="Index">Cart</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Indore, Madhya Pradesh</p>
+                <p>📞 +91 9876543210</p>
+                <p>📧 foodcorner@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Food Corner | All Rights Reserved
+        </div>
+    </footer>
+    </body>
+</html>

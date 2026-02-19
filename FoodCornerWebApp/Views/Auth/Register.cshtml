@@ -1,0 +1,60 @@
+﻿@model FoodCorner.DTO.RegisterDTO
+@{
+    Layout = null;
+}
+@if (ViewBag.PasswordErrors != null)
+{
+    <ul class="error">
+        @foreach (string err in ViewBag.PasswordErrors)
+        {
+            <li>@err</li>
+        }
+    </ul>
+}
+<html>
+<head>
+    <title>Register</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="body">
+    <div class="form">
+        <div class="box">
+            <h2>Register</h2>
+            <form asp-action="Register" method="post">
+                <div>
+                    <label>Name</label>
+                    <input asp-for="Name" />
+                    <span asp-validation-for="Name" class="error"></span>
+                </div>
+
+                <div>
+                    <label>Email</label>
+                    <input asp-for="Email" />
+                    <span asp-validation-for="Email" class="error"></span>
+                </div>
+                <div>
+                    <label>Password</label>
+                    <input asp-for="Password" type="password" />
+                    <span asp-validation-for="Password" class="error"></span>
+                </div>
+
+                <div>
+                    <label>Role</label>
+                    <select asp-for="Role">
+                        <option value="">Select Role</option>
+                        <option value="Customer">Customer</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                    <span asp-validation-for="Role" class="error"></span>
+                </div>
+                <button type="submit">Register</button>
+                <div class="link">  <h3>
+                    Already Have An Account?
+                    <a asp-controller="Auth" asp-action="Login">Login</a>
+                </h3>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

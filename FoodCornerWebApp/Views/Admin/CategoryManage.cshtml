@@ -1,0 +1,89 @@
+﻿@model List<Category>
+@{
+    var editItem = ViewBag.EditItem as Category;
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+    <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Category Manage</title>
+        <link href="~/css/admin.css" rel="stylesheet" asp-append-version="true" />
+    </head>
+    <body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+        <ul class="nav-links">
+            <a asp-controller="Admin" asp-action="MenuManage">Manage Food Items</a>
+            <a asp-controller="Admin" asp-action="CategoryManage">Manage Categories</a>
+            <a asp-controller="Admin" asp-action="OrderManage">Manage Orders</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>  
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h2>Manage Categories</h2>
+            <a asp-action="CategoryManage" asp-route-editId="0" class="add-btn">+ Add New</a>
+        </div>
+
+
+        @if (editItem != null || Context.Request.Query["editId"] == "0")
+        {
+            <div class="edit-box">
+                <form method="post"
+                      asp-action="@(editItem == null ? "CreateCategory" : "EditCategory")">
+
+                    @if (editItem != null)
+                    {
+                        <input type="hidden" name="CategoryId" value="@editItem.CategoryId" />
+                    }
+
+                    <input type="text"
+                           name="CategoryName"
+                           value="@editItem?.CategoryName"
+                           placeholder="Category Name"
+                           required />
+
+                    <button type="submit">
+                        @(editItem == null ? "Add" : "Update")
+                    </button>
+
+                    <a asp-action="CategoryManage" class="cancel-btn">Cancel</a>
+                </form>
+            </div>
+        }
+
+        <table class="food-table">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr >
+                    <td class ="category_item">@item.CategoryId</td>
+                    <td class="category_item">@item.CategoryName</td>
+                    <td class ="category_item">
+                        <a asp-action="CategoryManage"
+                           asp-route-editId="@item.CategoryId"
+                           class="action-btn edit-btn">Edit</a>
+
+                        <a asp-action="DeleteCategory"
+                           asp-route-id="@item.CategoryId"
+                           class="action-btn delete-btn">Delete</a>
+                    </td>
+
+                </tr>
+            }
+        </table>
+
+    </div>
+
+    </body>
+</html>

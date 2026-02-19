@@ -1,0 +1,97 @@
+﻿@{
+    Layout = null;
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+        <link href="~/css/site.css" rel="stylesheet" asp-append-version="true"/>
+        </head>
+    <body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="AboutUs">About Us</a>
+            <a asp-controller="Food" asp-action="Menu">Menu</a>
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+            <li><a href="#contact">Contact</a></li>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+    <section class="contact-section" id="contact">
+        <h2>Contact Us</h2>
+        <div class="contact-modern">
+            <div class="contact-card">
+                <div class="contact-left">
+                    <div class="discount-circle">
+                        <h2>10%</h2>
+                        <p>Off<br /> On<br />First Order</p>
+                    </div>
+
+                    <h3>Our Contact</h3>
+                    <a href="#" class="call-btn">Call Us</a>
+                </div>
+
+                <div class="contact-right" id="contact">
+
+                    <div class="contact-item">
+                        <div class="icon">💬</div>
+                        <div>
+                            <h4>Chat To Us</h4>
+                            <p>Our friendly team is here to help.</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon">📍</div>
+                        <div>
+                            <h4>Office</h4>
+                            <p>Indore, Madhya Pradesh , India</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>Everyday from 10am to 7pm<br>+91 9876543210</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <footer class="custom-footer">
+            <div class="footer-wrapper">
+
+                <div class="footer-section">
+                    <h2>FOOD CORNER</h2>
+                    <p>Pure Veg | Fresh Taste | Quality Food</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a asp-controller="Home" asp-action="Index">Home</a>
+                    <a asp-controller="About" asp-action="AboutUs">About</a>
+                    <a asp-controller="Food" asp-action="Menu">Menu</a>
+                    <a asp-controller="Cart" asp-action="Index">Cart</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>📍 Indore, Madhya Pradesh</p>
+                    <p>📞 +91 9876543210</p>
+                    <p>📧 foodcorner@gmail.com</p>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                © 2026 Food Corner | All Rights Reserved
+            </div>
+        </footer>
+    </body>
+</html>

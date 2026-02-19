@@ -1,0 +1,124 @@
+﻿@model List<FoodCorner.DTO.OrderResponseDTO>
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "Manage Orders";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head><title></title>
+        <link href="~/css/admin.css" rel="stylesheet" asp-append-version="true" /></head>
+    <body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+        <ul class="nav-links">
+            <a asp-controller="Admin" asp-action="MenuManage">Manage Food Items</a>
+            <a asp-controller="Admin" asp-action="CategoryManage">Manage Categories</a>
+            <a asp-controller="Admin" asp-action="OrderManage">Manage Orders</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+    <h2 class="page-title">Manage Orders</h2>
+
+    <table class="table-custom">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Update</th>
+                <th>View</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.CustomerName</td>
+                    <td>₹ @order.TotalAmount</td>
+                    <td>
+                        <span class="status-badge status-@order.Status.ToLower()">
+                            @order.Status
+                        </span>
+                    </td>
+
+                    <td>
+                        <form asp-action="UpdateStatus" method="post">
+                            <input type="hidden" name="id" value="@order.OrderId" />
+
+                            <select name="status" class="status-select">
+                                <option value="0">Pending</option>
+                                <option value="1">Confirmed</option>
+                                <option value="2">Preparing</option>
+                                <option value="3">Delivered</option>
+                                <option value="4">Cancelled</option>
+                            </select>
+
+                            <button type="submit" class="btn-update">
+                                Update
+                            </button>
+                        </form>
+                    </td>
+
+
+                    <td>
+                        <a asp-action="OrderManage"
+                           asp-route-detailsId="@order.OrderId"
+                           class="btn-view">
+                            View
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (ViewBag.SelectedOrder != null)
+    {
+        var selected = ViewBag.SelectedOrder as FoodCorner.DTO.OrderResponseDTO;
+
+        <div class="modal-overlay">
+            <div class="modal-box">
+                <h3>Order Details</h3>
+
+                <p><strong>Order ID:</strong> @selected.OrderId</p>
+                <p><strong>Customer:</strong> @selected.CustomerName</p>
+                <p><strong>Status:</strong> @selected.Status</p>
+                <p><strong>Total Amount:</strong> ₹ @selected.TotalAmount</p>
+
+                <h4>Items</h4>
+
+                <table class="table-custom small">
+                    <thead>
+                        <tr>
+                            <th>Food</th>
+                            <th>Qty</th>
+                            <th>Unit Price</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in selected.Items)
+                        {
+                            <tr>
+                                <td>@item.FoodItemName</td>
+                                <td>@item.Quantity</td>
+                                <td>₹ @item.UnitPrice</td>
+                                <td>₹ @item.TotalPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div>
+                    <a asp-action="OrderManage" class="btn-close">Close</a>
+                </div>
+            </div>
+        </div>
+    }
+
+    </body>
+</html>

@@ -1,0 +1,11 @@
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\bin\Debug\net10.0\FoodCorner.DTO.deps.json
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\bin\Debug\net10.0\FoodCorner.DTO.dll
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\bin\Debug\net10.0\FoodCorner.DTO.pdb
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\FoodCorner.DTO.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\FoodCorner.DTO.AssemblyInfoInputs.cache
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\FoodCorner.DTO.AssemblyInfo.cs
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\FoodCorner.DTO.csproj.CoreCompileInputs.cache
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\FoodCorner.DTO.dll
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\refint\FoodCorner.DTO.dll
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\FoodCorner.DTO.pdb
+C:\Users\WINDOWS\source\repos\FoodCorner\FoodCorners.DTO\obj\Debug\net10.0\ref\FoodCorner.DTO.dll

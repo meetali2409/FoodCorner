@@ -1,0 +1,67 @@
+﻿@model List<FoodCornerWebApp.Models.CartItem>
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+            <li><a asp-controller="About" asp-action="AboutUs">About Us</a></li>
+            <li><a asp-controller="Food" asp-action="Menu">Menu</a></li>
+            <li><a asp-controller="Cart" asp-action="Index">Cart</a></li>
+            <li><a asp-controller="About" asp-action="Contact">Contact</a></li>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+
+    <div class="cart-page">
+        <h2>Your Cart</h2>
+
+        @if (!Model.Any())
+        {
+            <p class="empty-cart">Your cart is empty</p>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+                <div class="cart-card">
+
+                    <img src="@item.Image" />
+
+                    <div class="cart-info">
+                        <h4>@item.FoodItemName</h4>
+                        <p class="category">@item.CategoryName</p>
+                        <p class="price">₹@item.Price</p>
+                        <div class="qty-box">
+                            <a asp-controller="Cart" asp-action="Decrease" asp-route-id="@item.FoodItemId">−</a>
+                            <span>@item.Quantity</span>
+                            <a asp-controller="Cart" asp-action="Increase" asp-route-id="@item.FoodItemId">+</a>
+                        </div>
+                        <div class="cart-right">
+                            <p class="total">₹@item.Total</p>
+                            <a asp-controller="Cart" asp-action="Remove" asp-route-id="@item.FoodItemId" class="btn btn-danger"> Remove </a>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="cart-summary">
+                <h3>Grand Total: ₹@Model.Sum(x => x.Total)</h3>
+                <a asp-controller="Order" asp-action="Checkout" class="checkout-btn"> Checkout </a>
+            </div>
+        }
+    </div>
+
+</body>
+</html>

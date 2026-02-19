@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "FoodCornerAPI\\FoodCornerAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "FoodCornerWebApp\\FoodCornerWebApp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

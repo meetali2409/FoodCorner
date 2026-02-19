@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>About Us</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            FOOD CORNER
+        </div>
+
+        <ul class="nav-links">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="About" asp-action="AboutUs">About Us</a>
+            <a asp-controller="Food" asp-action="Menu">Menu</a>
+            <a asp-controller="Cart" asp-action="Index">Cart</a>
+            <a asp-controller="About" asp-action="Contact">Contact</a>
+            <a asp-controller="Auth" asp-action="Logout">Logout</a>
+        </ul>
+    </nav>
+    <div class="about-page">
+
+        <div class="about-header">
+            <h1>About Food Corner</h1>
+            <p>Serving Fresh and Tasty Food with Love</p>
+        </div>
+
+        <div class="about-section">
+
+            <div class="about-image">
+                <img src="https://www.champaranmeathousedaman.com/public/images/products/1732185441-veg-restaurant.jpg" alt="Food Corner" id="img1" />
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdBHb7EdPsXduUSmtREZJ71ICKf_qOSU_b5Q&s" alt="Food Corner" id="img2" />
+            </div>
+
+            <div class="about-content">
+                <p>
+                    Food Corner is a family restaurant that serves fresh, hygienic,
+                    and delicious food. We focus on quality ingredients and
+                    homemade taste in every dish.
+                </p>
+
+                <p>
+                    Our goal is to make every customer happy and satisfied.
+                    Affordable prices and fast service are what make us special.
+                </p>
+
+                <h3>Why Choose Us?</h3>
+                <ul>
+                    <li>Fresh ingredients</li>
+                    <li>Clean and hygienic kitchen</li>
+                    <li>Affordable prices</li>
+                    <li>Fast service</li>
+                    <li>Friendly staff</li>
+                </ul>
+
+                <a href="/Food/Menu" class="menu-btn">View Menu</a>
+            </div>
+
+        </div>
+
+    </div>
+    <footer class="custom-footer">
+        <div class="footer-wrapper">
+
+            <div class="footer-section">
+                <h2>FOOD CORNER</h2>
+                <p>Pure Veg | Fresh Taste | Quality Food</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a asp-controller="Home" asp-action="Index">Home</a>
+                <a asp-controller="About" asp-action="AboutUs">About</a>
+                <a asp-controller="Food" asp-action="Menu">Menu</a>
+                <a asp-controller="Cart" asp-action="Index">Cart</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>📍 Indore, Madhya Pradesh</p>
+                <p>📞 +91 9876543210</p>
+                <p>📧 foodcorner@gmail.com</p>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            © 2026 Food Corner | All Rights Reserved
+        </div>
+    </footer>
+
+</body>
+</html>

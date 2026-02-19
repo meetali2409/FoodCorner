@@ -1,0 +1,138 @@
+﻿using AutoMapper;
+using FoodCornerAPI.Models;
+using FoodCornerAPI.Models.DTO;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace FoodCornerAPI.Controllers
+{
+    [Route("api/Food")]
+    [ApiController]
+    public class FoodController : ControllerBase
+    {
+        private readonly FoodCornerDbContext _context;
+        private readonly IMapper _mapper;
+        public FoodController(FoodCornerDbContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        [HttpGet]
+        public IActionResult GetFoods()
+        {
+            var foods = _context.FoodItems.ToList();
+            return Ok(foods);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<ApiResponse<FoodDTO>>> CreateFoodItem(
+        FoodItemCreateDTO foodDTO)
+        {
+            if (foodDTO == null)
+                return BadRequest(ApiResponse<object>.BadRequest("Food data required"));
+
+            var duplicateFood = await _context.FoodItems
+                .FirstOrDefaultAsync(o =>
+                    o.FoodItemName.ToLower() == foodDTO.FoodItemName.ToLower());
+
+            if (duplicateFood != null)
+                return Conflict(ApiResponse<object>.Conflict("Food already exists"));
+
+            var foodItem = _mapper.Map<FoodItem>(foodDTO);
+
+            await _context.FoodItems.AddAsync(foodItem);
+            await _context.SaveChangesAsync();
+
+            var result = _mapper.Map<FoodDTO>(foodItem);
+
+            return Ok(ApiResponse<FoodDTO>.Ok(result, "Food created successfully"));
+        }
+
+        [HttpGet("{FoodItemName}")]
+        public async Task<ActionResult<ApiResponse<FoodDTO>>> GetFoodItemByName(string FoodItemName)
+        {
+            try
+            {
+                var fooditem = await _context.FoodItems.FirstOrDefaultAsync();
+
+                if (fooditem == null)
+                {
+                    return NotFound(ApiResponse<Object>.Notfound($"FoodItem with name {FoodItemName} was not found"));
+                }
+                return Ok(ApiResponse<FoodDTO>.Ok(_mapper.Map<FoodDTO>(fooditem), "Records retrieved successfully"));
+
+
+            }
+            catch (Exception ex)
+            {
+                var errorResponse = ApiResponse<object>.Error(500, "An Error occured while retieving Fooditem with name } ");
+                return StatusCode(500, errorResponse);
+            }
+        }
+
+
+        //[HttpGet("{Category}")]
+        //public async Task<ActionResult<ApiResponse<FoodDTO>>> GetFoodItemByCategory(string Category)
+        //{
+        //    try
+        //    {
+        //        var category = await _context.Categories.FirstOrDefaultAsync();
+
+        //        if (category == null)
+        //        {
+        //            return NotFound(ApiResponse<Object>.Notfound($"FoodItem with category {Category} was not found"));
+        //        }
+        //        return Ok(ApiResponse<FoodDTO>.Ok(_mapper.Map<FoodDTO>(category), "Records retrieved successfully"));
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var errorResponse = ApiResponse<object>.Error(500, "An Error occured while retieving Fooditem with Category ");
+        //        return StatusCode(500, errorResponse);
+        //    }
+        //}
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<ApiResponse<FoodDTO>>> UpdateVilla(int id, FoodItemUpdateDTO foodDTO)
+        {
+            try
+            {
+                if (foodDTO == null)
+                {
+                    return BadRequest(ApiResponse<object>.BadRequest("FoodItem datas are required"));
+
+                }
+                if (id != foodDTO.FoodItemId)
+                {
+                    return BadRequest(ApiResponse<object>.BadRequest("FoodItem id in URL does not similar to the villa id in request body"));
+                }
+
+                var existingFoodItem = await _context.FoodItems.FirstOrDefaultAsync(u => u.FoodItemId == id);
+                if (existingFoodItem == null)
+                {
+                    return NotFound(ApiResponse<Object>.Notfound($"FoodItem with id {id} was not found"));
+                }
+
+                var duplicateVilla = await _context.FoodItems.FirstOrDefaultAsync(u => u.FoodItemName.ToLower() == foodDTO.FoodItemName.ToLower() && u.FoodItemId != id);
+                if (duplicateVilla != null)
+                {
+                    return Conflict(ApiResponse<object>.Conflict($"A FoodItem with the name '{foodDTO.FoodItemName}' is alreay exists."));
+
+                }
+
+                _mapper.Map(foodDTO, existingFoodItem);
+                await _context.SaveChangesAsync();
+                var response = ApiResponse<FoodDTO>.Ok(_mapper.Map<FoodDTO>(foodDTO), "FoodItem updated successfully");
+                return Ok(foodDTO);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    $"An Error occured while updating villa with ID {ex.Message} ");
+            }
+        }
+    }
+
+    }
