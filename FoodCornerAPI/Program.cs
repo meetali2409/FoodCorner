@@ -13,7 +13,8 @@ public partial class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddDbContext<FoodCornerDbContext>(options =>
-            options.UseSqlServer( builder.Configuration.GetConnectionString("FoodCornerDb"))
+            options.UseSqlServer(
+                builder.Configuration.GetConnectionString("FoodCornerDb"))
         );
 
         builder.Services.AddIdentity<User, IdentityRole>(options =>
@@ -24,14 +25,13 @@ public partial class Program
             options.Password.RequireLowercase = true;
             options.Password.RequireDigit = true;
         })
-            .AddEntityFrameworkStores<FoodCornerDbContext>()
-            .AddDefaultTokenProviders();
+        .AddEntityFrameworkStores<FoodCornerDbContext>()
+        .AddDefaultTokenProviders();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddOpenApi();
 
-     
         builder.Services.AddCors(options =>
         {
             options.AddPolicy("AllowUI", policy =>
@@ -39,8 +39,12 @@ public partial class Program
                       .AllowAnyHeader()
                       .AllowAnyMethod());
         });
+
         builder.Services.AddAutoMapper(typeof(MappingProfile));
+
         var app = builder.Build();
+
+        app.MapGet("/", () => "FoodCorner API Running");
 
         if (app.Environment.IsDevelopment())
         {
@@ -48,16 +52,24 @@ public partial class Program
             app.MapScalarApiReference();
         }
 
-        using (var scope = app.Services.CreateScope())
+        try
         {
+            using var scope = app.Services.CreateScope();
             await RoleSeeder.SeedRolesAsync(scope.ServiceProvider);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Role seeding failed: {ex.Message}");
         }
 
         app.UseHttpsRedirection();
+        app.UseCors("AllowUI");
+
         app.UseAuthentication();
         app.UseAuthorization();
-        app.UseCors("AllowUI");
+
         app.MapControllers();
-        app.Run();
+
+        await app.RunAsync();
     }
 }

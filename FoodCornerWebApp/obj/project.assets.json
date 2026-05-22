@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "targets": {
     "net10.0": {
       "Newtonsoft.Json/13.0.4": {
@@ -71,23 +71,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\WINDOWS\\.nuget\\packages\\": {},
+    "C:\\Users\\lenovo\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\WINDOWS\\source\\repos\\FoodCorner\\FoodCornerWebApp\\FoodCornerWebApp.csproj",
+      "projectUniqueName": "C:\\Users\\lenovo\\source\\repos\\FoodCorner\\FoodCornerWebApp\\FoodCornerWebApp.csproj",
       "projectName": "FoodCornerWebApp",
-      "projectPath": "C:\\Users\\WINDOWS\\source\\repos\\FoodCorner\\FoodCornerWebApp\\FoodCornerWebApp.csproj",
-      "packagesPath": "C:\\Users\\WINDOWS\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\WINDOWS\\source\\repos\\FoodCorner\\FoodCornerWebApp\\obj\\",
+      "projectPath": "C:\\Users\\lenovo\\source\\repos\\FoodCorner\\FoodCornerWebApp\\FoodCornerWebApp.csproj",
+      "packagesPath": "C:\\Users\\lenovo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\lenovo\\source\\repos\\FoodCorner\\FoodCornerWebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\WINDOWS\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\lenovo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -100,10 +100,11 @@
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "C:\\Users\\WINDOWS\\source\\repos\\FoodCorner\\FoodCorners.DTO\\FoodCorner.DTO.csproj": {
-              "projectPath": "C:\\Users\\WINDOWS\\source\\repos\\FoodCorner\\FoodCorners.DTO\\FoodCorner.DTO.csproj"
+            "C:\\Users\\lenovo\\source\\repos\\FoodCorner\\FoodCorners.DTO\\FoodCorner.DTO.csproj": {
+              "projectPath": "C:\\Users\\lenovo\\source\\repos\\FoodCorner\\FoodCorners.DTO\\FoodCorner.DTO.csproj"
             }
           }
         }
@@ -118,10 +119,11 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.100"
+      "SdkAnalysisLevel": "10.0.300"
     },
     "frameworks": {
       "net10.0": {
+        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Newtonsoft.Json": {
@@ -148,7 +150,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

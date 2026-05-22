@@ -20,7 +20,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\FoodCorners.DTO\FoodCorner.DTO.csproj" />
-	  <ProjectReference Include="..\FoodCornerWebApp\FoodCornerWebApp.csproj" />
 	</ItemGroup>
 
 </Project>
