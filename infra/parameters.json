@@ -16,6 +16,9 @@
         },
         "sqlAdminUser": {
             "value": "user"
+        },
+        "sqlAdminPassword": {
+            "value": "SQL_ADMIN_PASSWORD"
         }
     }
 }

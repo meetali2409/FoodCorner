@@ -1,20 +1,4 @@
-# Visual Studio
 .vs/
 bin/
 obj/
-
-# User files
-*.user
-*.suo
-
-# Logs
-*.log
-
-# Publish folder
 publish/
-
-# Rider
-.idea/
-
-# VS Code
-.vscode/
